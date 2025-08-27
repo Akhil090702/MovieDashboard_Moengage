@@ -76,6 +76,10 @@ npm start
 - Pagination uses OMDb’s page system (10 results per page). The backend caches results by query + page for faster subsequent access.
 - Loader animation indicates data is being fetched.
 
+## Vercel Link
+Frontend: https://movieflix-dashboard-frontend.vercel.app/login
+Backend: https://movieflix-dashboard-o8ms.vercel.app/
+
 ##Screenshots
 <img width="1459" height="878" alt="Screenshot 2025-08-28 at 3 07 47 AM" src="https://github.com/user-attachments/assets/c5adbb15-c688-4215-b2cb-c18408244ee2" />
 <img width="1459" height="878" alt="Screenshot 2025-08-28 at 3 08 49 AM" src="https://github.com/user-attachments/assets/db0b6089-cde3-4e08-a208-4272bfe48cab" />
