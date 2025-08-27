@@ -1,16 +1,16 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const movieSchema = new mongoose.Schema({
-  imdbID: { type: String, required: true, unique: true },
+  imdbID: { type: String, required: true, unique: true, index: true },
   title: String,
-  year: Number,
-  genre: [String],
+  year: String,
+  genre: String,
   director: String,
-  actors: [String],
-  runtime: Number,
-  rating: Number,
-  lastUpdated: { type: Date, default: Date.now }
+  actors: String,
+  plot: String,
+  poster: String,
+  raw: mongoose.Schema.Types.Mixed, 
+  cachedAt: { type: Date, default: Date.now, expires: 60 * 60 * 24 } // 24h TTL
 });
 
-const Movie = mongoose.model('Movie', movieSchema);
-export default Movie;
+export default mongoose.model("Movie", movieSchema);

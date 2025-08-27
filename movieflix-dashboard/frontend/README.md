@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# MovieFlix Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🎬 **MovieFlix** is a full-stack movie dashboard application that allows users to search for movies, view detailed information, filter by genre, sort by rating/year/title, and explore statistics like genre distribution, average IMDb rating, and runtime trends. It also includes pagination and admin-level caching of movie data for faster performance.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- Search movies by title
+- Fetch detailed movie information from OMDb API
+- Filter movies by genre
+- Sort movies by rating, year
+- Pagination support for browsing through search results
+- Movie analytics dashboard:
+  - Genre distribution (Pie chart)
+  - Average IMDb rating (Bar chart)
+  - Average runtime by year (Line chart)
+- Backend caching for faster repeated searches
+- Loader animation while fetching data
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Frontend:** React, CSS, Chart.js
+- **Backend:** Node.js, Express.js, MongoDB, Axios
+- **APIs:** OMDb API
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation & Setup
 
-### `npm run build`
+1. Clone the repository
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+git clone https://github.com/<your-username>/MovieFlix.git
+cd MovieFlix
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend:
 
-### `npm run eject`
+cd backend
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Frontend:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+cd frontend
+npm install
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Setup MongoDB with below connection string
+4. Create a .env file in the backend directory
+PORT=5000
+OMDB_API_KEY=your_omdb_api_key
+MONGO_URI=mongodb://localhost:27017/moviedb
+JWT_SECRET=your_jwt_secret_key
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. Run the backend server
+cd backend
+npm run dev
 
-## Learn More
+6. Run the frontend
+cd frontend
+npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Open `http://localhost:3000` in your browser.
+2. Use the search bar to look for movies by title.
+3. Apply filters by genre and sorting options.
+4. Click on any movie card to see detailed information.
+5. Browse through pages using the pagination buttons.
+6. View movie analytics in the "View Stats" section.
 
-### Code Splitting
+## Notes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- Pagination uses OMDb’s page system (10 results per page). The backend caches results by query + page for faster subsequent access.
+- Loader animation indicates data is being fetched.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

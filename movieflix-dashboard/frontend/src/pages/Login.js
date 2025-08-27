@@ -1,53 +1,45 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../utils/api';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "../css/Login.css";
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+const Login = ({ onLogin }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const res = await api.post('/auth/login', { username, password });
-      localStorage.setItem('token', res.data.token);
-      navigate('/stats');
-    } catch (err) {
-      setError('Invalid credentials. Try again.');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email === "demo@user.com" && password === "1234") {
+      onLogin(true); 
+      navigate("/"); 
+    } else {
+      setError("Invalid credentials");
     }
   };
 
   return (
-    <div className="p-6 max-w-sm mx-auto bg-white rounded shadow">
-    <h2 className="text-2xl font-bold mb-4 text-center">Admin Login</h2>
-  
-    {error && <p className="text-red-500 mb-2 text-sm text-center">{error}</p>}
-  
-    <input
-      type="text"
-      placeholder="Username"
-      className="border p-2 rounded w-full mb-3"
-      value={username}
-      onChange={(e) => setUsername(e.target.value)}
-    />
-  
-    <input
-      type="password"
-      placeholder="Password"
-      className="border p-2 rounded w-full mb-4"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-    />
-  
-    <button
-      onClick={handleLogin}
-      className="bg-blue-600 text-white px-4 py-2 w-full rounded hover:bg-blue-700"
-    >
-      Login
-    </button>
-  </div>
-  
+    <div className="login-container">
+      <h2>Login to MovieFlix</h2>
+      <form onSubmit={handleSubmit} className="login-form">
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Login</button>
+        {error && <p className="error">{error}</p>}
+      </form>
+    </div>
   );
 };
 
